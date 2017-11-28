@@ -1,0 +1,79 @@
+
+.add-player {
+    &__form {
+
+    }
+}
+
+.player {
+    &__submit {
+        position: absolute;
+        top:0;
+        input {
+            font-size:14px;
+            border-top: none;
+            border-left: none;
+        }
+        button {
+            border-top: none;
+        }
+    }
+
+    &__name {
+        font-size: 22px;
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+        text-align: center;
+    }
+
+    &__score {
+        font-size: 36px;
+    }
+
+    &__remove {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+}
+
+.player-list {
+    &__player {
+        height: 120px;
+        border: white 1px solid;
+        border-right: none;
+        position: relative;
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+
+        &:last-child {
+            border-right:white 1px solid;
+        }
+
+
+
+    }
+}
+
+.players {
+    padding: 20px 20px 0;
+    &__add-player {
+
+
+        button {
+            &:last-child {
+                margin-left: 10px;
+            }
+
+        }
+    }
+
+    &__player-list {
+        padding: 20px;
+
+    }
+}
+

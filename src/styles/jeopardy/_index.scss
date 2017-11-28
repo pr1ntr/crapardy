@@ -1,0 +1,28 @@
+@import './players';
+@import './board';
+@import './info';
+
+
+button {
+    background: rgba(255, 255, 255, 0.24);
+    border: 1px solid white;
+    color: white;
+    padding: 0 10px;
+    cursor: pointer;
+    transition: background .2s;
+    &:hover {
+        background: rgba(255, 255, 255, 0.5);
+
+    }
+}
+
+input {
+    background: transparent;
+    border:1px solid white;
+    border-right: none;
+    height: 24px;
+    font-size: 22px;
+    color: white;
+    padding: 0 10px;
+
+}

@@ -1,0 +1,136 @@
+
+
+/*
+    Color
+*/
+
+@mixin navBackgroundColor() {
+    background: #393939; /* Old browsers */
+    background: -moz-linear-gradient(top, #393939 15%, #000000 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #393939 15%,#000000 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #393939 15%,#000000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#393939', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+}
+
+/* 
+    Aspect Ratio 
+*/
+
+@mixin aspect-ratio($width, $height) {
+    position: relative;
+    &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: ($height / $width) * 100%;
+    }
+    > .content {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/*
+    Helpers
+*/
+$base-font-size:16px;
+
+@function em($px, $base: $base-font-size) {
+  @return ($px / $base) * 1em;
+}
+
+
+@mixin autoAlpha($v) {
+  opacity:$v;
+  @if $v == 0 {
+      visibility: hidden;
+  } @else {
+      visibility: visible;
+  }
+}
+
+
+@mixin scaleOnHover() {
+  transition: transform 0.25s;
+  transform: scale(1);
+
+  &:hover{
+      transform: scale(1.05);
+  }
+}
+
+@mixin selectNone() {
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+@mixin fullscreen(){
+  width: 100%;
+  height: 100%;
+}
+
+@mixin flexCenter(){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*
+    Position
+*/
+
+@mixin centerX() {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin centerY() {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin centerXY() {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin centerReset() {
+    transform: translate(0, 0);
+}
+
+/*
+  Utils
+*/
+
+@mixin test($color) {
+  outline: 1px solid $color !important;
+}
+
+@mixin hardwareAccel() {
+  // Improve performance on mobile/tablet devices
+  // Perspective reduces blurryness of text in Chrome
+  transform: perspective(1px) translateZ(0);
+  -webkit-backface-visibility: hidden;
+}
+
+@mixin improveAntiAlias() {
+  // Improve aliasing on mobile/tablet devices
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+@mixin forceBlockLevel() {
+  // Transforms need to be block-level to work
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@mixin improve() {
+  @include forceBlockLevel();
+  @include hardwareAccel();
+  @include improveAntiAlias();
+}

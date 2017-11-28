@@ -1,0 +1,37 @@
+{
+  "name": "jeopardy",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "classnames": "^2.2.5",
+    "flexboxgrid-sass": "^8.0.5",
+    "lodash": "^4.17.4",
+    "node-sass-chokidar": "^0.0.3",
+    "promise-polyfill": "^6.0.2",
+    "qs": "^6.5.1",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.17",
+    "recompose": "^0.26.0",
+    "redux": "^3.7.2",
+    "redux-persist": "^5.4.0",
+    "redux-saga": "^0.16.0",
+    "redux-thunk": "^2.2.0",
+    "string-similarity": "^1.2.0"
+  },
+  "scripts": {
+    "build-css": "node-sass-chokidar src/App.scss -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/App.scss -o src/ --watch",
+    "start": "concurrently \"react-scripts start\" \"yarn watch-css\"",
+    "build": "concurrently \"react-scripts build\" \"yarn build-css\"",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1"
+  }
+}

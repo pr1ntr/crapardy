@@ -1,0 +1,49 @@
+/* Colors */
+$silver: #c7c6c4;
+$platinum: #eaeaea;
+$charcoal: #3B475E;
+$denim:#1060C2;
+$dodgerBlue: #1574e8;
+$coolBlack:#022C64;
+$whiteSmoke: #f4f4f4;
+$richElectricBlue: #008cd5;
+$background-gray: #c7c6c4;
+$footer-gray: #eaeaea;
+$radar-chart-blue: #1060C2;
+$blackRussian: #181927;
+
+$sm-min: 48em;
+$md-min: 62em;
+$lg-min: 75em;
+
+$mq-sm:(min-width: #{$sm-min});
+$mq-md:(min-width: #{$md-min});
+$mq-lg:(min-width: #{$lg-min});
+
+$mq-sm-max:(max-width: #{$sm-min - 1});
+$mq-md-max:(max-width: #{$md-min - 1});
+$mq-md-max:(max-width: #{$lg-min - 1});
+
+//Grid
+$breakpoints:
+    sm $sm-min 48rem,
+    md $md-min 62rem,
+    lg $lg-min 75rem;
+
+//Sides
+$margin-xs: 0;
+$margin-sm: .8rem;
+$margin-md: 3.25rem;
+$margin-lg: 6.25rem;
+
+//Sides
+$padding-xs: 1.25rem;
+$padding-sm: 2.5rem;
+$padding-md: 6.25rem;
+$padding-lg: $padding-md;
+
+$max-page-width: 1296px;
+
+
+$helvetica-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$helvetica-condensed-font: "Helvetica Neue Condensed", Helvetica, Arial, sans-serif;

@@ -1,0 +1,58 @@
+body {
+    width: 100vw;
+    min-height: 100vh;
+    background: #212121;
+    color: #d5d5f5;
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: #303030 0px 0px 0px 1000px inset !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+a {
+    color: #039BE5;
+}
+
+.main {
+    padding: 20px;
+}
+
+.react-flex-data {
+    color: #ffffff;
+}
+
+
+.h1 {
+    font-size: 36px;
+}
+
+.h2 {
+    font-size: 30px;
+}
+
+.h3 {
+    font-size: 24px;
+}
+
+.h4 {
+    font-size: 18px;
+}
+
+h4 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+    padding-top: 0;
+    letter-spacing: 0;
+    font-size: 20px;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+    height: 64px;
+    line-height: 64px;
+    flex: 1 1 0%;
+}
+

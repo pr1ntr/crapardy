@@ -1,0 +1,99 @@
+@mixin defaultContentWidthShadow(){
+    width: 100%;
+    max-width: $max-page-width;
+    margin: 0 auto;
+    -webkit-box-shadow: 0px 0px 45px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 45px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 45px 0px rgba(0,0,0,0.75);
+}
+
+@mixin defaultHoverAnimation() {
+    transition: opacity 0.125s ease-in-out;
+    &:hover{
+        opacity: 0.6;
+    }
+}
+
+@mixin defaultContentPadding() {
+    padding-left:$padding-xs;
+    padding-right:$padding-xs;
+
+    @media #{$mq-sm} {
+        padding-left:$padding-sm;
+        padding-right:$padding-sm;
+    }
+    @media #{$mq-md} {
+        padding-left:$padding-md;
+        padding-right:$padding-md;
+    }
+    @media #{$mq-lg} {
+        padding-left:$padding-lg;
+        padding-right:$padding-lg;
+    }
+}
+
+
+@mixin defaultContentMargin() {
+    margin-left:$margin-xs;
+    margin-right:$margin-xs;
+
+    @media #{$mq-sm} {
+        margin-left:$margin-sm;
+        margin-right:$margin-sm;
+    }
+    @media #{$mq-md} {
+        margin-left:$margin-md;
+        margin-right:$margin-md;
+    }
+    @media #{$mq-lg} {
+        max-width: 1280px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+}
+
+@mixin defaultBodyFontSize() {
+    font-size: 0.9375rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.0625rem;
+}
+
+
+/*
+MISC
+*/
+
+$z: (
+    layers:
+        background
+        content
+        content-above
+        navigation
+        overlay
+        transition
+        util
+);
+
+@function single($x) {
+    @return length($x) == 1;
+}
+
+@function first($x) {
+    @return nth($x, 1);
+}
+
+@function last($x) {
+    @return nth($x, length($x));
+}
+
+@mixin z-index($component, $add: 0) {
+    $layer: if(single($component), layers, first($component));
+    $index: index(map-get($z, $layer), last($component));
+    z-index: $index + $add;
+}
+
+@function transition($property) {
+    @return $property $default-transition-time-easing;
+}
+
+
