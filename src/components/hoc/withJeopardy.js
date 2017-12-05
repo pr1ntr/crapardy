@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { compose, setPropTypes, withHandlers } from 'recompose'
-import { getCategories, getClue, newGame, submitAnswer } from '../../actions/jeopardy'
+import { getCategories, getClue, newGame, submitAnswer, passAnswer } from '../../actions/jeopardy'
 
 export default (Component) => compose(
-    connect(state => ({ ...state.jeopardy  }), { getCategories, getClue, newGame, submitAnswer } ),
+    connect(state => ({ ...state.jeopardy  }), { getCategories, getClue, newGame, submitAnswer, passAnswer } ),
 
     withHandlers(),
     setPropTypes({
@@ -17,5 +17,6 @@ export default (Component) => compose(
         isNewGame: PropTypes.bool,
         error: PropTypes.object,
         round: PropTypes.number,
+        roundOver: PropTypes.bool,
     }),
 )(Component)

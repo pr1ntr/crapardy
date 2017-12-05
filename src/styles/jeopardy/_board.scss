@@ -46,9 +46,17 @@
 
 .clue {
     &__text {
+        font-size: 14px;
+        color: rgba(255, 255, 0, 0.56);
+
         &--Current {
-            color: yellow;
+            color: white;
+            font-weight: bolder;
         }
+    }
+
+    &__value {
+        font-size: 22px;
     }
 }
 

@@ -1,75 +1,11 @@
 @charset "UTF-8";
 /* Colors */
-/*
-!*PUT FONTS HERE*!
 @font-face {
-    font-family: 'Helvetica Neue';
-    src: url('../fonts/HelveticaNeueLTStd-Bd.eot'); !* IE9 Compat Modes *!
-    src: url('../fonts/HelveticaNeueLTStd-Bd.eot?#iefix') format('embedded-opentype'), !* IE6-IE8 *!
-    url('../fonts/HelveticaNeueLTStd-Bd.woff') format('woff'), !* Modern Browsers *!
-    url('../fonts/HelveticaNeueLTStd-Bd.ttf')  format('truetype'); !* Safari, Android, iOS *!
+  font-family: 'AvantGarde Md BT';
+  src: url("./assets/fonts/avantgarde.woff2") format("woff2"), url("./assets/fonts/avantgarde.woff") format("woff");
+  font-style: normal;
+  font-weight: 400; }
 
-    font-style:   normal;
-    font-weight:  700;
-}
-
-@font-face {
-    font-family: 'Helvetica Neue Condensed';
-    src: url('../fonts/HelveticaNeueLTStd-BdCn.eot'); !* IE9 Compat Modes *!
-    src: url('../fonts/HelveticaNeueLTStd-BdCn.eot?#iefix') format('embedded-opentype'), !* IE6-IE8 *!
-    url('../fonts/HelveticaNeueLTStd-BdCn.woff') format('woff'), !* Modern Browsers *!
-    url('../fonts/HelveticaNeueLTStd-BdCn.ttf')  format('truetype'); !* Safari, Android, iOS *!
-
-    font-style:   normal;
-    font-weight:  700;
-}
-
-@font-face {
-    font-family: 'Helvetica Neue Condensed';
-    src: url('../fonts/HelveticaNeueLTStd-Cn.eot'); !* IE9 Compat Modes *!
-    src: url('../fonts/HelveticaNeueLTStd-Cn.eot?#iefix') format('embedded-opentype'), !* IE6-IE8 *!
-    url('../fonts/HelveticaNeueLTStd-Cn.woff') format('woff'), !* Modern Browsers *!
-    url('../fonts/HelveticaNeueLTStd-Cn.ttf')  format('truetype'); !* Safari, Android, iOS *!
-
-    font-style:   normal;
-    font-weight:  400;
-}
-
-@font-face {
-    font-family: 'Helvetica Neue';
-    src: url('../fonts/HelveticaNeueLTStd-Md.eot'); !* IE9 Compat Modes *!
-    src: url('../fonts/HelveticaNeueLTStd-Md.eot?#iefix') format('embedded-opentype'), !* IE6-IE8 *!
-    url('../fonts/HelveticaNeueLTStd-Md.woff') format('woff'), !* Modern Browsers *!
-    url('../fonts/HelveticaNeueLTStd-Md.ttf')  format('truetype'); !* Safari, Android, iOS *!
-
-    font-style:   normal;
-    font-weight:  500;
-}
-
-@font-face {
-    font-family: 'Helvetica Neue';
-    src: url('../fonts/HelveticaNeueLTStd-Roman.eot'); !* IE9 Compat Modes *!
-    src: url('../fonts/HelveticaNeueLTStd-Roman.eot?#iefix') format('embedded-opentype'), !* IE6-IE8 *!
-    url('../fonts/HelveticaNeueLTStd-Roman.woff') format('woff'), !* Modern Browsers *!
-    url('../fonts/HelveticaNeueLTStd-Roman.ttf')  format('truetype'); !* Safari, Android, iOS *!
-
-    font-style:   normal;
-    font-weight:  400;
-}
-
-
-
-@mixin fontMedium() {
-    font-weight: 500;
-}
-
-@mixin fontBold() {
-    font-weight: 700;
-}
-
-@mixin fontCondensed() {
-    font-family: $helvetica-condensed-font;
-}*/
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
@@ -2201,9 +2137,10 @@ MISC
 body {
   width: 100vw;
   min-height: 100vh;
-  background: #212121;
-  color: #d5d5f5;
-  font-family: 'Roboto', sans-serif;
+  background: #00c0f0;
+  color: white;
+  font-family: 'AvantGarde Md BT', sans-serif;
+  text-transform: uppercase;
   overflow-x: hidden; }
 
 input:-webkit-autofill {
@@ -4575,14 +4512,21 @@ h4 {
   clip: auto; }
 
 .player__submit {
+  left: 0;
+  right: 0;
   position: absolute;
   top: 0; }
   .player__submit input {
     font-size: 14px;
     border-top: none;
-    border-left: none; }
+    border-left: none;
+    width: 60%; }
   .player__submit button {
-    border-top: none; }
+    border-top: none;
+    width: 20%; }
+    .player__submit button:last-child {
+      border-left: none;
+      border-right: none; }
 
 .player__name {
   font-size: 22px;
@@ -4596,7 +4540,7 @@ h4 {
 
 .player__remove {
   position: absolute;
-  top: 10px;
+  bottom: 10px;
   right: 10px;
   cursor: pointer; }
 
@@ -4607,7 +4551,8 @@ h4 {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center; }
+  justify-content: center;
+  max-width: 400px; }
   .player-list__player:last-child {
     border-right: white 1px solid; }
 
@@ -4638,8 +4583,15 @@ h4 {
   .clue-col__clue:last-child {
     border-bottom: white 1px solid; }
 
-.clue__text--Current {
-  color: yellow; }
+.clue__text {
+  font-size: 14px;
+  color: rgba(255, 255, 0, 0.56); }
+  .clue__text--Current {
+    color: white;
+    font-weight: bolder; }
+
+.clue__value {
+  font-size: 22px; }
 
 .category-list__category {
   border: white 1px solid;
@@ -4661,13 +4613,17 @@ h4 {
     border: 1px dashed white;
     height: 60px; }
 
+.info-container__text {
+  font-size: 36px; }
+
 button {
   background: rgba(255, 255, 255, 0.24);
   border: 1px solid white;
   color: white;
   padding: 0 10px;
   cursor: pointer;
-  transition: background .2s; }
+  transition: background .2s;
+  font-size: 12px; }
   button:hover {
     background: rgba(255, 255, 255, 0.5); }
 
@@ -4679,6 +4635,3 @@ input {
   font-size: 22px;
   color: white;
   padding: 0 10px; }
-
-body {
-  background: blue; }

@@ -1,8 +1,9 @@
 import { compareTwoStrings } from 'string-similarity'
 import { takeEvery, call, put, select } from 'redux-saga/effects'
+import wait from '../utils/wait'
 import {
     GET_CATEGORIES, JSERVICE, REQUEST_ERROR, RETURN_CATEGORIES, GET_CLUE, RETURN_CLUE, SUBMIT_ANSWER,
-    APPLICATION_ERROR, ADD_POINTS, REMOVE_POINTS, COMPLETE_ROUND
+    APPLICATION_ERROR, ADD_POINTS, REMOVE_POINTS, COMPLETE_ROUND, RESET_ROUND, PASS_ANSWER
 } from '../constants/app'
 import { get } from '../utils/net'
 import qs from 'qs'
@@ -11,12 +12,29 @@ export function* root() {
     yield takeEvery(GET_CATEGORIES, getCategories)
     yield takeEvery(GET_CLUE, getClue)
     yield takeEvery(SUBMIT_ANSWER, submitAnswer)
+    yield takeEvery(COMPLETE_ROUND, resetRound)
+    yield takeEvery(PASS_ANSWER, passAnswer)
 
 
 }
 
+export function* passAnswer({ payload: { playerId, clueId }}) {
+    try {
+        console.log('wtf is this shit')
+        yield put({ type: ADD_POINTS, payload: { id: playerId, points: 0, clueId }})
+        let { players: { list: players} } = yield select()
+        console.log(players.filter(p => p.answered.includes(clueId)).length)
+        if(players.filter(p => p.answered.includes(clueId)).length === players.length) {
+            yield put({ type: COMPLETE_ROUND })
+        }
 
 
+
+    } catch(error) {
+        yield put({ type: APPLICATION_ERROR, payload: { error } })
+
+    }
+}
 
 export function* submitAnswer({ payload: { playerId, value, clueId } }) {
     try {
@@ -36,7 +54,6 @@ export function* submitAnswer({ payload: { playerId, value, clueId } }) {
                 yield put({ type: REMOVE_POINTS, payload: { id: playerId, points: currentClue.value, clueId }})
                 let { players: { list: players} } = yield select()
                 if(players.filter(p => p.answered.includes(clueId)).length === players.length) {
-
                     yield put({ type: COMPLETE_ROUND })
                 }
             }
@@ -44,6 +61,17 @@ export function* submitAnswer({ payload: { playerId, value, clueId } }) {
             console.info('[answerSubmitted]', `currentClue.answer: ${answer}, value ${userAnswer}, answerTolerance ${answerTolerance}`)
 
         }
+
+    } catch(error) {
+        yield put({ type: APPLICATION_ERROR, payload: { error } })
+
+    }
+}
+
+function* resetRound() {
+    try {
+        yield wait(5)
+        yield put({type: RESET_ROUND })
 
     } catch(error) {
         yield put({ type: APPLICATION_ERROR, payload: { error } })

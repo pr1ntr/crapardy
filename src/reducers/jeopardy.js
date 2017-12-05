@@ -1,21 +1,19 @@
 
-import { RETURN_CATEGORIES, RETURN_CLUE, REQUEST_ERROR, NEW_GAME, COMPLETE_ROUND } from '../constants/app'
+import { RETURN_CATEGORIES, RETURN_CLUE, REQUEST_ERROR, NEW_GAME, COMPLETE_ROUND, RESET_ROUND } from '../constants/app'
 
 
 const initialState = {
     categories: [],
     clues: [],
     error: null,
-    isNewGame: true
+    isNewGame: true,
+    roundOver: false
 }
 
 
 export default function(state = initialState, { type, payload }) {
     switch(type) {
         case RETURN_CLUE :
-
-            console.log(payload)
-
             return {
                 ...state,
                 clues: [
@@ -38,6 +36,12 @@ export default function(state = initialState, { type, payload }) {
         case COMPLETE_ROUND :
             return {
                 ...state,
+                roundOver: true,
+            }
+        case RESET_ROUND :
+            return {
+                ...state,
+                roundOver: false,
                 clues: [
                     ...state.clues.map(c => {
 

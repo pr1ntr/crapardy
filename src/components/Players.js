@@ -25,6 +25,9 @@ const Player = compose(
             const value = document.getElementById(`playerSubmit[${id}]`).value
             submitAnswer(id, value, currentClue)
 
+        },
+        onPassAnswer: ({ passAnswer, id, currentClue  }) => () => {
+            passAnswer(id, currentClue)
         }
     }),
     setPropTypes({
@@ -35,14 +38,16 @@ const Player = compose(
         removePlayer: PropTypes.func.isRequired,
         onSubmitAnswer: PropTypes.func.isRequired,
         submitAnswer: PropTypes.func.isRequired,
+        onPassAnswer: PropTypes.func.isRequired,
         answered: PropTypes.array.isRequired,
 
     }),
-)(({ id, name, score, onRemovePlayer, onSubmitAnswer, answered, currentClue }) => {
+)(({ id, name, score, onRemovePlayer, onSubmitAnswer, answered, currentClue, onPassAnswer }) => {
     return <div className="player-list__player col-xs">
         {!answered.includes(currentClue) && !!currentClue && <div className="player__submit row center-xs">
             <input type="text" id={`playerSubmit[${id}]`}/>
-            <button onClick={onSubmitAnswer} >Submit Answer</button>
+            <button onClick={onSubmitAnswer} >Submit</button>
+            <button onClick={onPassAnswer} >Pass</button>
         </div>}
 
         <div className="player__name">{name}</div>

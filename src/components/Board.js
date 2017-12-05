@@ -33,7 +33,7 @@ const Clue = compose(
             {clueData ?
                 <div className={cx('clue__text', { 'clue__text--Current': clueData.current })}>{clueData.question}</div>
                 :
-                <span>{value}</span>
+                <span><b>{value}</b></span>
             }
             </div>
     </div>

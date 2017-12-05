@@ -1,4 +1,4 @@
-import { GET_CATEGORIES, GET_CLUE, NEW_GAME, SUBMIT_ANSWER } from '../constants/app'
+import { GET_CATEGORIES, GET_CLUE, NEW_GAME, SUBMIT_ANSWER, PASS_ANSWER } from '../constants/app'
 
 export const getCategories = () => {
     return { type: GET_CATEGORIES }
@@ -16,4 +16,8 @@ export const newGame = () => {
 
 export const submitAnswer = (playerId, value, clueId) => {
     return { type: SUBMIT_ANSWER, payload: { playerId, value, clueId } }
+}
+
+export const passAnswer = (playerId, clueId) => {
+    return { type: PASS_ANSWER, payload: { playerId, clueId }  }
 }
